@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Source Compute Credits</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Center vertically */
+            margin-bottom: 10px; /* Space between items */
+        }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px; /* Space between checkbox and label */
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Apply for Free Compute Credits</h1>
+    <form id="creditForm">
+        
+        <label for="githubHandle">GitHub Handle (required)</label>
+        <input type="text" id="githubHandle" name="githubHandle" required>
+
+        <label for="email">Email (required)</label>
+        <input type="email" id="email" name="email" required>
+
+        <label>VM Requirements (required)</label>
+        <label><input type="checkbox" id="cpu" name="vmRequirements" value="CPU"> CPU</label>
+        <label><input type="checkbox" id="h100" name="vmRequirements" value="H100"> H100</label>
+        <label><input type="checkbox" id="h200" name="vmRequirements" value="H200"> H200</label>
+
+        <label>Primary Workloads (required)</label>
+        <label><input type="checkbox" id="aiMl" name="primaryWorkloads" value="AI/ML"> AI/ML</label>
+        <label><input type="checkbox" id="ciCd" name="primaryWorkloads" value="CI/CD"> CI/CD</label>
+        <label><input type="checkbox" id="rag" name="primaryWorkloads" value="RAG"> RAG</label>
+        <label><input type="checkbox" id="etl" name="primaryWorkloads" value="ETL"> ETL</label>
+        
+        <label><input type="checkbox" id="otherWorkload"> Other (please specify):</label>
+        <input type="text" id="otherWorkloadText" name="otherWorkloadText">
+
+        <fieldset>
+            <legend>I want to be considered for compute credits for:</legend>
+            <label><input type="checkbox" id="cpuVm" name="computeCreditsFor" value="CPU VM"> CPU VM</label>
+            <label><input type="checkbox" id="h100Vm" name="computeCreditsFor" value="H100 VM"> H100 VM</label>
+
+            <div style='margin-top:30px;'>
+
+                <label for='projectName'>Project Name:</label>
+                <input type='text' id='projectName' name='projectName' required><br>
+
+                <label for='repoUrl'>Repository URL:</label>
+                <input type='text' id='repoUrl' name='repoUrl'><br>
+
+                <label for='useCase'>Use Case:</label>
+                <textarea id='useCase' name='useCase' rows='3'></textarea><br>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <div style='margin-top:30px;'>
+            <legend>Keep me informed about:</legend>
+            <label><input type='checkbox' id='fluenceVms' name='informedAbout' value='Fluence VMS'> Fluence VMS</label>
+            <label><input type='checkbox' id='fluenceProtocol' name='informedAbout' value='Fluence Protocol'> Fluence Protocol New Developments</label>
+            </div>
+        </fieldset>
+
+      <button type='submit'>Submit</button>
+    </form>
+</div>
+
+<script>
+// JavaScript code remains unchanged
+document.getElementById('creditForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const githubHandle = document.getElementById('githubHandle').value;
+    const email = document.getElementById('email').value;
+
+    const vmRequirements = Array.from(document.querySelectorAll('input[name=vmRequirements]:checked')).map(el => el.value);
+    
+    const primaryWorkloads = Array.from(document.querySelectorAll('input[name=primaryWorkloads]:checked')).map(el => el.value);
+    
+    const otherWorkloadText = document.getElementById('otherWorkloadText').value;
+
+    const computeCreditsFor = Array.from(document.querySelectorAll('input[name=computeCreditsFor]:checked')).map(el => el.value);
+    
+    const projectName = document.getElementById('projectName').value;
+
+    const repoUrl = document.getElementById('repoUrl').value;
+
+    const useCase = document.getElementById('useCase').value;
+
+	const informedAbout = Array.from(document.querySelectorAll('input[name=informedAbout]:checked')).map(el => el.value);
+
+	// Here you can handle the form data (e.g., send it to your server)
+	console.log('GitHub Handle:', githubHandle);
+	console.log('Email:', email);
+	console.log('VM Requirements:', vmRequirements);
+	console.log('Primary Workloads:', primaryWorkloads);
+	console.log('Other Workload:', otherWorkloadText);
+	console.log('Compute Credits For:', computeCreditsFor);
+	console.log('Project Name:', projectName);
+	console.log('Repository URL:', repoUrl);
+	console.log('Use Case:', useCase);
+	console.log('Informed About:', informedAbout);
+
+	alert('Thank you for applying! We will review your submission.');
+	
+	// Reset the form
+	this.reset();
+});
+</script>
+
+</body>
+</html>
